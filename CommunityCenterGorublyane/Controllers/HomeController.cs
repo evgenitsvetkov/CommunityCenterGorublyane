@@ -1,4 +1,5 @@
-﻿using CommunityCenterGorublyane.Models;
+﻿using CommunityCenterGorublyane.Core.Models.Home;
+using CommunityCenterGorublyane.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,7 +16,9 @@ namespace CommunityCenterGorublyane.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new IndexViewModel();
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
