@@ -107,7 +107,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
             {
                 Id = 6,
                 Title = "Школа по пияно",
-                Description = "За деца от 6 до 12години - със записване",
+                Description = "За деца от 6 до 12 години - със записване",
                 Contact = "Никол Николова - 088 355 7792",
                 ImageUrl = ""
             };

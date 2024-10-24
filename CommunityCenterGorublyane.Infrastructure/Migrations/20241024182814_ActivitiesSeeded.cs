@@ -8,6 +8,54 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<string>(
+                name: "Content",
+                table: "News",
+                type: "nvarchar(500)",
+                maxLength: 500,
+                nullable: false,
+                comment: "News content",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(1500)",
+                oldMaxLength: 1500,
+                oldComment: "News content");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Text",
+                table: "Comments",
+                type: "nvarchar(500)",
+                maxLength: 500,
+                nullable: false,
+                comment: "Comment content",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(1500)",
+                oldMaxLength: 1500,
+                oldComment: "Comment content");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Description",
+                table: "Activities",
+                type: "nvarchar(200)",
+                maxLength: 200,
+                nullable: false,
+                comment: "Activity description",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(1000)",
+                oldMaxLength: 1000,
+                oldComment: "Activity description");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Contact",
+                table: "Activities",
+                type: "nvarchar(100)",
+                maxLength: 100,
+                nullable: false,
+                comment: "Activity contact",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(150)",
+                oldMaxLength: 150,
+                oldComment: "Activity contact");
+
             migrationBuilder.InsertData(
                 table: "Activities",
                 columns: new[] { "Id", "Contact", "Description", "ImageUrl", "Title" },
@@ -18,7 +66,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                     { 3, "Полина Димитрова - 088 565 2332", "За деца от 7 до 14 години: петък - от 18:00ч.", "", "Народно пеене" },
                     { 4, "Биляна Малджиева - 087 779 5558", "За деца от 4 до 14 години: вторник и петък - от 17:00ч. до 18:00ч.", "", "Художествена Гимнастика" },
                     { 5, "Юлиана Николова - 089 655 2834", "За деца от 4 до 14 години - със записване", "", "Уроци по рисуване" },
-                    { 6, "Никол Николова - 088 355 7792", "За деца от 6 до 12години - със записване", "", "Школа по пияно" }
+                    { 6, "Никол Николова - 088 355 7792", "За деца от 6 до 12 години - със записване", "", "Школа по пияно" }
                 });
 
             migrationBuilder.UpdateData(
@@ -26,14 +74,14 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                 keyColumn: "Id",
                 keyValue: "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "8d3fbcc8-4529-46f8-8fcd-9706993b3285", "AQAAAAEAACcQAAAAEFb8pOKLeK2qtqHBXXKsuz1uLc3GfNaLjchM25uo50qlOr4iFDK+9qzITH9fGfp3TQ==", "c2f10538-1b66-4afb-b989-24ac172ccf9d" });
+                values: new object[] { "278f1eb3-aea7-4330-8023-36a156b99961", "AQAAAAEAACcQAAAAEJ20wtiF0ihGBOOKdhtCyr1Ufxklp5EMl4+cyOz4mB/fry339DeCsdaYOwOOs2Keig==", "b353bfcd-33ed-41dc-8757-0d86b43d454d" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "dea12856-c198-4129-b3f3-b893d8395082",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "f387f0b7-381d-4558-9274-ba7c0c3f55b7", "AQAAAAEAACcQAAAAECuKGdDcMu0sYesw+Xa1kS9/Ds/wixKGvsV9IxHaM/vybLwGc2nQPZnGu24SFa8llw==", "7768499a-30a5-485f-9640-4345e4282098" });
+                values: new object[] { "c493c7ba-946f-4e5a-a514-94288861da0a", "AQAAAAEAACcQAAAAEDW7rvbAgXackyXGyI9KamllJ/DO/Wy6yArPCGTU8YDpanVtTJU8z4L/ns7RH0X3jw==", "c2314d9e-8acf-4693-983e-5ed392e1d157" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -67,6 +115,54 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                 table: "Activities",
                 keyColumn: "Id",
                 keyValue: 6);
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Content",
+                table: "News",
+                type: "nvarchar(1500)",
+                maxLength: 1500,
+                nullable: false,
+                comment: "News content",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(500)",
+                oldMaxLength: 500,
+                oldComment: "News content");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Text",
+                table: "Comments",
+                type: "nvarchar(1500)",
+                maxLength: 1500,
+                nullable: false,
+                comment: "Comment content",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(500)",
+                oldMaxLength: 500,
+                oldComment: "Comment content");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Description",
+                table: "Activities",
+                type: "nvarchar(1000)",
+                maxLength: 1000,
+                nullable: false,
+                comment: "Activity description",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(200)",
+                oldMaxLength: 200,
+                oldComment: "Activity description");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Contact",
+                table: "Activities",
+                type: "nvarchar(150)",
+                maxLength: 150,
+                nullable: false,
+                comment: "Activity contact",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(100)",
+                oldMaxLength: 100,
+                oldComment: "Activity contact");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",

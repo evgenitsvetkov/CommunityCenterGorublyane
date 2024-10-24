@@ -33,14 +33,14 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
 
                     b.Property<string>("Contact")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasComment("Activity contact");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)")
                         .HasComment("Activity description");
 
                     b.Property<string>("ImageUrl")
@@ -105,7 +105,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                         {
                             Id = 6,
                             Contact = "Никол Николова - 088 355 7792",
-                            Description = "За деца от 6 до 12години - със записване",
+                            Description = "За деца от 6 до 12 години - със записване",
                             ImageUrl = "",
                             Title = "Школа по пияно"
                         });
@@ -136,8 +136,8 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasMaxLength(1500)
-                        .HasColumnType("nvarchar(1500)")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
                         .HasComment("Comment content");
 
                     b.HasKey("Id");
@@ -160,8 +160,8 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(1500)
-                        .HasColumnType("nvarchar(1500)")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
                         .HasComment("News content");
 
                     b.Property<DateTime>("Date")
@@ -305,15 +305,15 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f387f0b7-381d-4558-9274-ba7c0c3f55b7",
+                            ConcurrencyStamp = "c493c7ba-946f-4e5a-a514-94288861da0a",
                             Email = "admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@mail.com",
                             NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAECuKGdDcMu0sYesw+Xa1kS9/Ds/wixKGvsV9IxHaM/vybLwGc2nQPZnGu24SFa8llw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDW7rvbAgXackyXGyI9KamllJ/DO/Wy6yArPCGTU8YDpanVtTJU8z4L/ns7RH0X3jw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7768499a-30a5-485f-9640-4345e4282098",
+                            SecurityStamp = "c2314d9e-8acf-4693-983e-5ed392e1d157",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         },
@@ -321,15 +321,15 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8d3fbcc8-4529-46f8-8fcd-9706993b3285",
+                            ConcurrencyStamp = "278f1eb3-aea7-4330-8023-36a156b99961",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFb8pOKLeK2qtqHBXXKsuz1uLc3GfNaLjchM25uo50qlOr4iFDK+9qzITH9fGfp3TQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ20wtiF0ihGBOOKdhtCyr1Ufxklp5EMl4+cyOz4mB/fry339DeCsdaYOwOOs2Keig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c2f10538-1b66-4afb-b989-24ac172ccf9d",
+                            SecurityStamp = "b353bfcd-33ed-41dc-8757-0d86b43d454d",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });
