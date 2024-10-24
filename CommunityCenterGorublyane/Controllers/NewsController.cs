@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommunityCenterGorublyane.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : BaseController
     {
         [HttpGet]
         public async Task<IActionResult> All()

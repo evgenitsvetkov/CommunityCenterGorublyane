@@ -2,7 +2,7 @@
 
 namespace CommunityCenterGorublyane.Controllers
 {
-    public class HistoryController : Controller
+    public class HistoryController : BaseController
     {
         public IActionResult Index()
         {
