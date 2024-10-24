@@ -33,15 +33,24 @@ namespace CommunityCenterGorublyane.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            return View();
+            var model = new ActivityFormModel();
+
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(ActivityFormModel model)
         {
-            return RedirectToAction(nameof(Details), new { id = "1" });
+            if (ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
+            int newActivityId = await activityService.CreateAsync(model);
+
+            return RedirectToAction(nameof(Details), new { id = newActivityId });
         }
 
         [HttpGet]
