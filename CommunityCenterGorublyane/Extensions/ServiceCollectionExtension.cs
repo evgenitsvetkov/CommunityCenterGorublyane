@@ -1,5 +1,5 @@
-﻿using CommunityCenterGorublyane.Core.Contracts.Activity;
-using CommunityCenterGorublyane.Core.Services.Activity;
+﻿using CommunityCenterGorublyane.Core.Contracts;
+using CommunityCenterGorublyane.Core.Services;
 using CommunityCenterGorublyane.Infrastructure.Data;
 using CommunityCenterGorublyane.Infrastructure.Data.Common;
 using Microsoft.AspNetCore.Identity;
