@@ -1,5 +1,6 @@
 ﻿using CommunityCenterGorublyane.Core.Models.Home;
 using CommunityCenterGorublyane.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -14,6 +15,7 @@ namespace CommunityCenterGorublyane.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var model = new IndexViewModel();

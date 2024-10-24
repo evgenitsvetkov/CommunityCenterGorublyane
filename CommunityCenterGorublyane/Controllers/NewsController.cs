@@ -1,10 +1,12 @@
 ﻿using CommunityCenterGorublyane.Core.Models.News;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommunityCenterGorublyane.Controllers
 {
     public class NewsController : BaseController
     {
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> All()
         {
@@ -13,6 +15,7 @@ namespace CommunityCenterGorublyane.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details()
         {

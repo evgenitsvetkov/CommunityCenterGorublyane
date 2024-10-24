@@ -1,10 +1,20 @@
-﻿using CommunityCenterGorublyane.Core.Models.Activity;
+﻿using CommunityCenterGorublyane.Core.Contracts;
+using CommunityCenterGorublyane.Core.Models.Activity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommunityCenterGorublyane.Controllers
 {
     public class ActivityController : BaseController
     {
+        private readonly IActivityService activityService;
+
+        public ActivityController(IActivityService _activityService)
+        {
+            activityService = _activityService;
+        }
+
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> All()
         {
@@ -13,6 +23,7 @@ namespace CommunityCenterGorublyane.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Details()
         {
