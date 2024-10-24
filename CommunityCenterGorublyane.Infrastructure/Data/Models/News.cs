@@ -4,6 +4,7 @@ using static CommunityCenterGorublyane.Infrastructure.Constants.DataConstants;
 
 namespace CommunityCenterGorublyane.Infrastructure.Data.Models
 {
+    [Comment("Community center's news")]
     public class News
     {
         [Key]
