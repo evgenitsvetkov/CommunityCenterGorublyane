@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CommunityCenterGorublyane.Infrastructure.Data.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
 {
@@ -8,9 +9,22 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
 
         public IdentityUser GuestUser { get; set; }
 
+        public Activity FirstActivity { get; set; }
+
+        public Activity SecondActivity { get; set; }
+
+        public Activity ThirdActivity { get; set; }
+
+        public Activity FourthActivity { get; set; }
+
+        public Activity FifthActivity { get; set; }
+
+        public Activity SixthActivity { get; set; }
+
         public SeedData()
         {
             SeedUsers();
+            SeedActivities();
         }
 
         private void SeedUsers()
@@ -40,6 +54,63 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
 
             GuestUser.PasswordHash =
                 hasher.HashPassword(GuestUser, "guest1233");
+        }
+
+        private void SeedActivities()
+        {
+            FirstActivity = new Activity()
+            {
+                Id = 1,
+                Title = "Детски танцов състав - Петлица",
+                Description = "- за деца: понеделник и сряда - от 17:30ч. до 18:15ч.\r\n- за юноши: понеделник и сряда - от 18:30ч. до 19:30ч.",
+                Contact = "Илко Желязков - 089 671 0606\r\nРалица Петрова - 088 323 7501",
+                ImageUrl = ""
+            };
+
+            SecondActivity = new Activity()
+            {
+                Id = 2,
+                Title = "Школа по народни танци - Петлица, за възрастни",
+                Description = "Вторник и четвъртък - от 18:30ч. до 19:30ч.",
+                Contact = "Ралица Иванова - 089 671 0606",
+                ImageUrl = ""
+            };
+
+            ThirdActivity = new Activity()
+            {
+                Id = 3,
+                Title = "Народно пеене",
+                Description = "За деца от 7 до 14 години: петък - от 18:00ч.",
+                Contact = "Полина Димитрова - 088 565 2332",
+                ImageUrl = ""
+            };
+
+            FourthActivity = new Activity()
+            {
+                Id = 4,
+                Title = "Художествена Гимнастика",
+                Description = "За деца от 4 до 14 години: вторник и петък - от 17:00ч. до 18:00ч.",
+                Contact = "Биляна Малджиева - 087 779 5558",
+                ImageUrl = ""
+            };
+
+            FifthActivity = new Activity()
+            {
+                Id = 5,
+                Title = "Уроци по рисуване",
+                Description = "За деца от 4 до 14 години - със записване",
+                Contact = "Юлиана Николова - 089 655 2834",
+                ImageUrl = ""
+            };
+
+            SixthActivity = new Activity()
+            {
+                Id = 6,
+                Title = "Школа по пияно",
+                Description = "За деца от 6 до 12години - със записване",
+                Contact = "Никол Николова - 088 355 7792",
+                ImageUrl = ""
+            };
         }
     }
 }

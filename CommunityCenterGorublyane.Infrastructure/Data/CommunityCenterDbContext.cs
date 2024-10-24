@@ -16,6 +16,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Data
         {
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new CommentConfiguration());
+            builder.ApplyConfiguration(new ActivityConfiguration());
 
             base.OnModelCreating(builder);
         }
