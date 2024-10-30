@@ -16,11 +16,18 @@ namespace CommunityCenterGorublyane.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllActivitiesQueryModel query)
         {
-            var model = new AllActivitiesQueryModel();
-            
-            return View(model);
+            var model = await activityService.AllAsync(
+                query.SearchTerm,
+                query.Sorting,
+                query.CurrentPage,
+                query.ActivitiesPerPage);
+
+            query.TotalActivitiesCount = model.TotalActivitiesCount;
+            query.Activities = model.Activities;
+
+            return View(query);
         }
 
         [AllowAnonymous]
