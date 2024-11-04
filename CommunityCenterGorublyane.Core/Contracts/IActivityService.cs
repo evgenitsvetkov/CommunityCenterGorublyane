@@ -16,5 +16,9 @@ namespace CommunityCenterGorublyane.Core.Contracts
         Task<bool> ExistsAsync(int id);
 
         Task<ActivityDetailsServiceModel> ActivityDetailsByIdAsync(int id);
+
+        Task EditAsync(int activityId, ActivityFormModel model);
+
+        Task<ActivityFormModel?> GetActivityFormModelAsync(int id);
     }
 }

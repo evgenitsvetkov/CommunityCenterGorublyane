@@ -2,6 +2,7 @@
 using CommunityCenterGorublyane.Core.Models.Activity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CommunityCenterGorublyane.Controllers
 {
@@ -66,17 +67,34 @@ namespace CommunityCenterGorublyane.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit()
+        public async Task<IActionResult> Edit(int id)
         {
-            var model = new ActivityFormModel();
-            
+            if (await activityService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            var model = await activityService.GetActivityFormModelAsync(id);
+
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(int id, ActivityFormModel model)
         {
-            return RedirectToAction(nameof(Details), new { id = "1" });
+            if (await activityService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid == false)
+            {
+                return View(model);
+            }
+
+            await activityService.EditAsync(id, model);
+
+            return RedirectToAction(nameof(Details), new { id });
         }
 
         [HttpGet]

@@ -1,16 +1,16 @@
 ﻿@model ActivityServiceModel 
 
-<div class="col-md-4"> 
+<div class="card-deck col-md-4"> 
     <div class="card mb-3"> 
         <img class="card-img-top" src="@Model.ImageUrl" alt="Activity Image"> 
         <div class="card-body text-center"> 
-            <h4>@Model.Title</h4> 
+            <h4 class="card-title">@Model.Title</h4> 
             <br /> 
-            <a asp-controller="Activity" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-success">Прочети повече</a>
+            <a asp-controller="Activity" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-primary">Прочети повече</a>
             @if (this.User.Identity.IsAuthenticated) 
             { 
-                <a asp-controller="Activity" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактирай</a>
-                <a asp-controller="Activity" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Изтрий</a> 
+                <a asp-controller="Activity" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Редактирай</a>
+                <a asp-controller="Activity" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Изтрий</a> 
             } 
         </div> 
     </div> 

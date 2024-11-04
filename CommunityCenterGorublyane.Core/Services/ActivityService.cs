@@ -85,10 +85,39 @@ namespace CommunityCenterGorublyane.Core.Services
             return activity.Id;
         }
 
+        public async Task EditAsync(int activityId, ActivityFormModel model)
+        {
+            var activity = await repository.GetByIdAsync<Activity>(activityId);
+
+            if (activity != null)
+            {
+                activity.Title = model.Title;
+                activity.Description = model.Description;
+                activity.Contact = model.Contact;
+                activity.ImageUrl = model.ImageUrl;
+
+                await repository.SaveChangesAsync();
+            }
+        }
+
         public async Task<bool> ExistsAsync(int id)
         {
             return await repository.AllReadOnly<Activity>()
                 .AnyAsync(a => a.Id == id);
+        }
+
+        public async Task<ActivityFormModel?> GetActivityFormModelAsync(int id)
+        {
+            return await repository.AllReadOnly<Activity>()
+                .Where(a => a.Id == id)
+                .Select(a => new ActivityFormModel()
+                {
+                    Title = a.Title,
+                    Description = a.Description,
+                    Contact = a.Contact,
+                    ImageUrl = a.ImageUrl
+                })
+                .FirstOrDefaultAsync();
         }
     }
 }

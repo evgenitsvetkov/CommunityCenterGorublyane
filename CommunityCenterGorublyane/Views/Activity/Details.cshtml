@@ -18,9 +18,9 @@
             <p>Контакти: <b>@Model.Contact</b></p>
             <div class="form-inline"> 
                 @if (this.User.Identity.IsAuthenticated) 
-                { 
-                    <a class="btn btn-warning" asp-controller="House" asp-action="Edit" asp-route-id="@Model.Id">Редактирай</a> 
-                    <a class="ml-2 btn btn-danger" asp-controller="House" asp-action="Delete" asp-route-id="@Model.Id">Изтрий</a> 
+                {
+                    <a class="btn btn-outline-primary" asp-controller="Activity" asp-action="Edit" asp-route-id="@Model.Id">Редактирай</a>
+                    <a class="ml-2 btn btn-outline-danger" asp-controller="Activity" asp-action="Delete" asp-route-id="@Model.Id">Изтрий</a> 
                 } 
             </div>
         </div> 
