@@ -32,9 +32,14 @@ namespace CommunityCenterGorublyane.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(int id)
         {
-            var model = new ActivityDetailsViewModel();
+            if (await activityService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            var model = await activityService.ActivityDetailsByIdAsync(id);
 
             return View(model);
         }

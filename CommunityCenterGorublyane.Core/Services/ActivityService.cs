@@ -16,6 +16,21 @@ namespace CommunityCenterGorublyane.Core.Services
             repository = _repository;
         }
 
+        public async Task<ActivityDetailsServiceModel> ActivityDetailsByIdAsync(int id)
+        {
+            return await repository.AllReadOnly<Activity>()
+                .Where(a => a.Id == id)
+                .Select(a => new ActivityDetailsServiceModel()
+                {
+                    Id = a.Id,
+                    Title = a.Title,
+                    Description = a.Description,
+                    Contact = a.Contact,
+                    ImageUrl = a.ImageUrl
+                })
+                .FirstAsync();
+        }
+
         public async Task<ActivityQueryServiceModel> AllAsync(
             string? searchTerm = null, 
             ActivitySorting sorting = ActivitySorting.Newest, 
@@ -42,14 +57,7 @@ namespace CommunityCenterGorublyane.Core.Services
             var activities = await activitiesToShow
                 .Skip((currentPage - 1) * activitiesPerPage)
                 .Take(activitiesPerPage)
-                .Select(a => new ActivityServiceModel()
-                {
-                    Id = a.Id,
-                    Title = a.Title,
-                    Description = a.Description,
-                    Contact = a.Contact,
-                    ImageUrl = a.ImageUrl,
-                })
+                .ProjectToActivityServiceModel()
                 .ToListAsync();
 
             int totalActivities = await activitiesToShow.CountAsync();
@@ -75,6 +83,12 @@ namespace CommunityCenterGorublyane.Core.Services
             await repository.SaveChangesAsync();
 
             return activity.Id;
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await repository.AllReadOnly<Activity>()
+                .AnyAsync(a => a.Id == id);
         }
     }
 }

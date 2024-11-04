@@ -12,5 +12,9 @@ namespace CommunityCenterGorublyane.Core.Contracts
             ActivitySorting sorting = ActivitySorting.Newest,
             int currentPage = 1,
             int activitiesPerPage = 1);
+
+        Task<bool> ExistsAsync(int id);
+
+        Task<ActivityDetailsServiceModel> ActivityDetailsByIdAsync(int id);
     }
 }
