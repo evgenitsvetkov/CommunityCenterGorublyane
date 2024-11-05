@@ -24,7 +24,7 @@ namespace CommunityCenterGorublyane.Core.Extensions
                 { "Детски танцов състав - Петлица", "Detski tancov sustav - Petlica" },
                 { "Школа по народни танци - Петлица, за възрастни", "Shkola po narodni tanci - Petlica, za vuzrastni" },
                 { "Народно пеене", "Narodno peene" },
-                { "Художествена Гимнастика", "Hudojestvena Gimnastika" },
+                { "Художествена гимнастика", "Hudojestvena gimnastika" },
                 { "Уроци по рисуване", "Uroci po risuvane" },
                 { "Школа по пияно", "Shkola po piqno" },
             };

@@ -64,8 +64,8 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Contact = "Илко Желязков - 089 671 0606\r\nРалица Петрова - 088 323 7501",
-                            Description = "- за деца: понеделник и сряда - от 17:30ч. до 18:15ч.\r\n- за юноши: понеделник и сряда - от 18:30ч. до 19:30ч.",
+                            Contact = "Илко Желязков - 089 671 0606; Ралица Петрова - 088 323 7501",
+                            Description = "За деца: понеделник и сряда - от 17:30ч. до 18:15ч. За юноши: понеделник и сряда - от 18:30ч. до 19:30ч.",
                             ImageUrl = "",
                             Title = "Детски танцов състав - Петлица"
                         },
@@ -91,7 +91,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                             Contact = "Биляна Малджиева - 087 779 5558",
                             Description = "За деца от 4 до 14 години: вторник и петък - от 17:00ч. до 18:00ч.",
                             ImageUrl = "",
-                            Title = "Художествена Гимнастика"
+                            Title = "Художествена гимнастика"
                         },
                         new
                         {
@@ -182,6 +182,8 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
+
+                    b.HasComment("Community center's news");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -305,15 +307,15 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c493c7ba-946f-4e5a-a514-94288861da0a",
+                            ConcurrencyStamp = "fe910db7-bef2-4a9d-9ea1-2a2265a67f9e",
                             Email = "admin@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@mail.com",
                             NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDW7rvbAgXackyXGyI9KamllJ/DO/Wy6yArPCGTU8YDpanVtTJU8z4L/ns7RH0X3jw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBvmIofEUWweaN4BCNBM86jB8UzEg623Q7TmpjUPswLPFth1C+Kzg+O7TvBhWUk7gg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c2314d9e-8acf-4693-983e-5ed392e1d157",
+                            SecurityStamp = "4064336c-b2ff-4aaf-a8c2-893dc807ca02",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         },
@@ -321,15 +323,15 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "278f1eb3-aea7-4330-8023-36a156b99961",
+                            ConcurrencyStamp = "7852f37a-621a-4174-8abd-2d093ef52a4f",
                             Email = "guest@mail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "guest@mail.com",
                             NormalizedUserName = "guest@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ20wtiF0ihGBOOKdhtCyr1Ufxklp5EMl4+cyOz4mB/fry339DeCsdaYOwOOs2Keig==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGfaZ1di8XptMS7LYgwzFxTeyp5ueU4NKLLH3WefMYECdbV9Bj5D1ES1u8hMcI8oMw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b353bfcd-33ed-41dc-8757-0d86b43d454d",
+                            SecurityStamp = "3192bf58-00bc-42ae-8880-8da9da71c03c",
                             TwoFactorEnabled = false,
                             UserName = "guest@mail.com"
                         });

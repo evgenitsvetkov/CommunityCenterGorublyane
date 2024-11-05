@@ -8,6 +8,10 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterTable(
+                name: "News",
+                comment: "Community center's news");
+
             migrationBuilder.AlterColumn<string>(
                 name: "Content",
                 table: "News",
@@ -61,10 +65,10 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                 columns: new[] { "Id", "Contact", "Description", "ImageUrl", "Title" },
                 values: new object[,]
                 {
-                    { 1, "Илко Желязков - 089 671 0606\r\nРалица Петрова - 088 323 7501", "- за деца: понеделник и сряда - от 17:30ч. до 18:15ч.\r\n- за юноши: понеделник и сряда - от 18:30ч. до 19:30ч.", "", "Детски танцов състав - Петлица" },
+                    { 1, "Илко Желязков - 089 671 0606; Ралица Петрова - 088 323 7501", "За деца: понеделник и сряда - от 17:30ч. до 18:15ч. За юноши: понеделник и сряда - от 18:30ч. до 19:30ч.", "", "Детски танцов състав - Петлица" },
                     { 2, "Ралица Иванова - 089 671 0606", "Вторник и четвъртък - от 18:30ч. до 19:30ч.", "", "Школа по народни танци - Петлица, за възрастни" },
                     { 3, "Полина Димитрова - 088 565 2332", "За деца от 7 до 14 години: петък - от 18:00ч.", "", "Народно пеене" },
-                    { 4, "Биляна Малджиева - 087 779 5558", "За деца от 4 до 14 години: вторник и петък - от 17:00ч. до 18:00ч.", "", "Художествена Гимнастика" },
+                    { 4, "Биляна Малджиева - 087 779 5558", "За деца от 4 до 14 години: вторник и петък - от 17:00ч. до 18:00ч.", "", "Художествена гимнастика" },
                     { 5, "Юлиана Николова - 089 655 2834", "За деца от 4 до 14 години - със записване", "", "Уроци по рисуване" },
                     { 6, "Никол Николова - 088 355 7792", "За деца от 6 до 12 години - със записване", "", "Школа по пияно" }
                 });
@@ -74,14 +78,14 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                 keyColumn: "Id",
                 keyValue: "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "278f1eb3-aea7-4330-8023-36a156b99961", "AQAAAAEAACcQAAAAEJ20wtiF0ihGBOOKdhtCyr1Ufxklp5EMl4+cyOz4mB/fry339DeCsdaYOwOOs2Keig==", "b353bfcd-33ed-41dc-8757-0d86b43d454d" });
+                values: new object[] { "7852f37a-621a-4174-8abd-2d093ef52a4f", "AQAAAAEAACcQAAAAEGfaZ1di8XptMS7LYgwzFxTeyp5ueU4NKLLH3WefMYECdbV9Bj5D1ES1u8hMcI8oMw==", "3192bf58-00bc-42ae-8880-8da9da71c03c" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "dea12856-c198-4129-b3f3-b893d8395082",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "c493c7ba-946f-4e5a-a514-94288861da0a", "AQAAAAEAACcQAAAAEDW7rvbAgXackyXGyI9KamllJ/DO/Wy6yArPCGTU8YDpanVtTJU8z4L/ns7RH0X3jw==", "c2314d9e-8acf-4693-983e-5ed392e1d157" });
+                values: new object[] { "fe910db7-bef2-4a9d-9ea1-2a2265a67f9e", "AQAAAAEAACcQAAAAEBvmIofEUWweaN4BCNBM86jB8UzEg623Q7TmpjUPswLPFth1C+Kzg+O7TvBhWUk7gg==", "4064336c-b2ff-4aaf-a8c2-893dc807ca02" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -115,6 +119,10 @@ namespace CommunityCenterGorublyane.Infrastructure.Migrations
                 table: "Activities",
                 keyColumn: "Id",
                 keyValue: 6);
+
+            migrationBuilder.AlterTable(
+                name: "News",
+                oldComment: "Community center's news");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Content",
