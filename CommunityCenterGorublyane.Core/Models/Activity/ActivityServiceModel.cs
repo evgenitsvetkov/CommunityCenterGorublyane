@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CommunityCenterGorublyane.Core.Contracts;
+using System.ComponentModel.DataAnnotations;
 using static CommunityCenterGorublyane.Core.Constants.MessageConstants;
 using static CommunityCenterGorublyane.Infrastructure.Constants.DataConstants;
 
 namespace CommunityCenterGorublyane.Core.Models.Activity
 {
-    public class ActivityServiceModel
+    public class ActivityServiceModel : IActivityModel
     {
         public int Id { get; set; }
 

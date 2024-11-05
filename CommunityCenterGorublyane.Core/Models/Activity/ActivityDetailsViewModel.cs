@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CommunityCenterGorublyane.Core.Contracts;
+using System.ComponentModel.DataAnnotations;
 
 namespace CommunityCenterGorublyane.Core.Models.Activity
 {
-    public class ActivityDetailsViewModel
+    public class ActivityDetailsViewModel : IActivityModel
     {
         public int Id { get; set; }
 

@@ -6,7 +6,8 @@
         <div class="card-body text-center"> 
             <h4 class="card-title">@Model.Title</h4> 
             <br /> 
-            <a asp-controller="Activity" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-primary">Прочети повече</a>
+            <a asp-controller="Activity" asp-action="Details" asp-route-id="@Model.Id" asp-route-information="@Model.GetInformation()" 
+                class="btn btn-outline-primary">Прочети повече</a>
             @if (this.User.Identity.IsAuthenticated) 
             { 
                 <a asp-controller="Activity" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Редактирай</a>

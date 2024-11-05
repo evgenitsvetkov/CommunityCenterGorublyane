@@ -1,4 +1,5 @@
 ﻿using CommunityCenterGorublyane.Core.Contracts;
+using CommunityCenterGorublyane.Core.Extensions;
 using CommunityCenterGorublyane.Core.Models.Activity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,7 @@ namespace CommunityCenterGorublyane.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id, string information)
         {
             if (await activityService.ExistsAsync(id) == false)
             {
@@ -40,6 +41,11 @@ namespace CommunityCenterGorublyane.Controllers
             }
 
             var model = await activityService.ActivityDetailsByIdAsync(id);
+
+            if (information != model.GetInformation())
+            {
+                return BadRequest();
+            }
 
             return View(model);
         }
@@ -62,7 +68,7 @@ namespace CommunityCenterGorublyane.Controllers
 
             int newActivityId = await activityService.CreateAsync(model);
 
-            return RedirectToAction(nameof(Details), new { id = newActivityId });
+            return RedirectToAction(nameof(Details), new { id = newActivityId, information = model.GetInformation() });
         }
 
         [HttpGet]
@@ -93,7 +99,7 @@ namespace CommunityCenterGorublyane.Controllers
 
             await activityService.EditAsync(id, model);
 
-            return RedirectToAction(nameof(Details), new { id });
+            return RedirectToAction(nameof(Details), new { id, information = model.GetInformation() });
         }
 
         [HttpGet]
