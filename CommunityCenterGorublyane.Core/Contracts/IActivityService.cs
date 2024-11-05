@@ -20,5 +20,7 @@ namespace CommunityCenterGorublyane.Core.Contracts
         Task EditAsync(int activityId, ActivityFormModel model);
 
         Task<ActivityFormModel?> GetActivityFormModelAsync(int id);
+
+        Task DeleteAsync(int activityId);
     }
 }

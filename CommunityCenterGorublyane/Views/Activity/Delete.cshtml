@@ -3,5 +3,31 @@
     ViewData["Title"] = "Изтрий Дейност";
 }
 
-<h2 class="text-center display-4">@ViewData["Title"]</h2>
+<h2 class="text-center display-4">@ViewBag.Title</h2>
 <hr />
+
+<form asp-action="Delete">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="card-img-top" src="@Model.ImageUrl" alt="Activity Image"> 
+        </div> 
+        <div class="col-md-8"> 
+            <div class="form-group"> 
+                <label asp-for="Title" class="control-label">Заглавие</label> 
+                <input asp-for="Title" class="form-control" disabled="disabled" /> 
+            </div> 
+            <div class="form-group"> 
+                <label asp-for="Description" class="control-label">Описание</label> 
+                <input asp-for="Description" class="form-control" disabled="disabled" /> 
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact" class="control-label">Контакти</label>
+                <input asp-for="Contact" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group mt-4"> 
+                <a class="btn btn-primary" asp-controller="Activity" asp-action="All">Назад</a>
+                <input type="submit" value="Изтрий" class="btn btn-danger" /> 
+            </div> 
+        </div> 
+    </div> 
+</form>

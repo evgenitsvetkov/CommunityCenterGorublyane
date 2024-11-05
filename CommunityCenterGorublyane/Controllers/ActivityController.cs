@@ -2,7 +2,6 @@
 using CommunityCenterGorublyane.Core.Models.Activity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace CommunityCenterGorublyane.Controllers
 {
@@ -100,7 +99,21 @@ namespace CommunityCenterGorublyane.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var model = new ActivityDetailsViewModel();
+            if (await activityService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            var activity = await activityService.ActivityDetailsByIdAsync(id);
+
+            var model = new ActivityDetailsViewModel()
+            {
+                Id = id,
+                Title = activity.Title,
+                Description = activity.Description,
+                Contact = activity.Contact,
+                ImageUrl = activity.ImageUrl,
+            };
 
             return View(model);
         }
@@ -108,6 +121,13 @@ namespace CommunityCenterGorublyane.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(ActivityDetailsViewModel model)
         {
+            if (await activityService.ExistsAsync(model.Id) == false)
+            {
+                return BadRequest();
+            }
+
+            await activityService.DeleteAsync(model.Id);
+
             return RedirectToAction(nameof(All));
         }
 

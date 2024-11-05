@@ -85,6 +85,12 @@ namespace CommunityCenterGorublyane.Core.Services
             return activity.Id;
         }
 
+        public async Task DeleteAsync(int activityId)
+        {
+            await repository.DeleteAsync<Activity>(activityId);
+            await repository.SaveChangesAsync();
+        }
+
         public async Task EditAsync(int activityId, ActivityFormModel model)
         {
             var activity = await repository.GetByIdAsync<Activity>(activityId);
