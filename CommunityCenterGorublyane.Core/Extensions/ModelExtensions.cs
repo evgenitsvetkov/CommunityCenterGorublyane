@@ -1,4 +1,5 @@
 ﻿using CommunityCenterGorublyane.Core.Contracts;
+using System.Runtime.ConstrainedExecution;
 using System.Text.RegularExpressions;
 
 namespace CommunityCenterGorublyane.Core.Extensions
@@ -9,12 +10,11 @@ namespace CommunityCenterGorublyane.Core.Extensions
         {
             string pattern = @"[^a-zA-Z0-9\-]";
 
-            string title = activity.Title;
-            string translatedInfo = TranslateToLatin(title).Replace(" ", "-");
-            translatedInfo = Regex.Replace(translatedInfo, pattern, string.Empty); 
+            string translatedInfo = TranslateToLatin(activity.Title).Replace(" ", "-");
+            translatedInfo = Regex.Replace(translatedInfo, pattern, string.Empty);
+            string removeRepeatedHyphens = Regex.Replace(translatedInfo, "-+", "-");
 
-
-            return translatedInfo;
+            return removeRepeatedHyphens;
         }
 
         private static string TranslateToLatin(string cyrillicText)
