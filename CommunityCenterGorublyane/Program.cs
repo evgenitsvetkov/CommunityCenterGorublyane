@@ -116,6 +116,11 @@ app.UseEndpoints(endpoints =>
         defaults: new { Controller = "Gallery", Action = "All" }
     );
 
+    endpoints.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+
     endpoints.MapDefaultControllerRoute();
     endpoints.MapRazorPages();
 });

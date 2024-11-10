@@ -9,9 +9,7 @@
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Профил</a>
         </li>
         <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Излизане</button>
-            </form>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" title="Back">Публичен Интерфейс</a>
         </li>
     }
     else
