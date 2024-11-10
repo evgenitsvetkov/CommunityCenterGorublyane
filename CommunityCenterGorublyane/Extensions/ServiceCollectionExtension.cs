@@ -32,7 +32,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration config)
         {
             services
-                .AddDefaultIdentity<IdentityUser>(options => 
+                .AddDefaultIdentity<IdentityUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireNonAlphanumeric = true;
@@ -40,6 +40,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     options.Password.RequireLowercase = true;
                     options.Password.RequireUppercase = true;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<CommunityCenterDbContext>();
 
             return services;
