@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("CommunityCenterDbContextConnection") ?? throw new InvalidOperationException("Connection string 'CommunityCenterDbContextConnection' not found.");
 
 builder.Services.AddApplicationDbContext(builder.Configuration);
 builder.Services.AddApplicationIdentity(builder.Configuration);
