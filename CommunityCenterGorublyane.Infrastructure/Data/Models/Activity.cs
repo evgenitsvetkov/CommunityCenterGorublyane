@@ -26,6 +26,6 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.Models
         public string Contact { get; set; } = string.Empty;
 
         [Comment("Activity image")]
-        public string ImageUrl { get; set; } = string.Empty;
+        public string? ImageUrl { get; set; } = string.Empty;
     }
 }

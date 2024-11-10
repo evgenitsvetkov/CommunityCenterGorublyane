@@ -22,7 +22,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.Models
         public string Content { get; set; } = string.Empty;
 
         [Comment("News image")]
-        public string ImageUrl { get; set; } = string.Empty;
+        public string? ImageUrl { get; set; } = string.Empty;
 
         [Required]
         [Comment("Date of publication")]

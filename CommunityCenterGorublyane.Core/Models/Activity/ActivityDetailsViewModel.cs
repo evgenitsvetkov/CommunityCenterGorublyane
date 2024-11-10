@@ -16,6 +16,6 @@ namespace CommunityCenterGorublyane.Core.Models.Activity
         [Display(Name = "Контакти")]
         public string Contact { get; set; } = string.Empty;
 
-        public string ImageUrl { get; set; } = string.Empty;
+        public string? ImageUrl { get; set; } = string.Empty;
     }
 }

@@ -31,6 +31,6 @@ namespace CommunityCenterGorublyane.Core.Models.Activity
         //public string Contact { get; set; } = string.Empty;
         
         [Display(Name = "Изображение")]
-        public string? ImageUrl { get; set; } 
+        public string? ImageUrl { get; set; } = string.Empty;
     }
 }

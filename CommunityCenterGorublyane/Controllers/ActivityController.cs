@@ -3,6 +3,7 @@ using CommunityCenterGorublyane.Core.Extensions;
 using CommunityCenterGorublyane.Core.Models.Activity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CommunityCenterGorublyane.Controllers
 {
@@ -53,6 +54,11 @@ namespace CommunityCenterGorublyane.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
+            if (User.IsAdmin() == false)
+            {
+                return Unauthorized();
+            }
+
             var model = new ActivityFormModel();
 
             return View(model);
@@ -66,6 +72,11 @@ namespace CommunityCenterGorublyane.Controllers
                 return View(model);
             }
 
+            if (User.IsAdmin() == false)
+            {
+                return Unauthorized();
+            }
+
             int newActivityId = await activityService.CreateAsync(model);
 
             return RedirectToAction(nameof(Details), new { id = newActivityId, information = model.GetInformation() });
@@ -77,6 +88,11 @@ namespace CommunityCenterGorublyane.Controllers
             if (await activityService.ExistsAsync(id) == false)
             {
                 return BadRequest();
+            }
+
+            if (User.IsAdmin() == false)
+            {
+                return Unauthorized();
             }
 
             var model = await activityService.GetActivityFormModelAsync(id);
@@ -97,6 +113,11 @@ namespace CommunityCenterGorublyane.Controllers
                 return View(model);
             }
 
+            if (User.IsAdmin() == false)
+            {
+                return Unauthorized();
+            }
+
             await activityService.EditAsync(id, model);
 
             return RedirectToAction(nameof(Details), new { id, information = model.GetInformation() });
@@ -108,6 +129,11 @@ namespace CommunityCenterGorublyane.Controllers
             if (await activityService.ExistsAsync(id) == false)
             {
                 return BadRequest();
+            }
+
+            if (User.IsAdmin() == false)
+            {
+                return Unauthorized();
             }
 
             var activity = await activityService.ActivityDetailsByIdAsync(id);
@@ -130,6 +156,11 @@ namespace CommunityCenterGorublyane.Controllers
             if (await activityService.ExistsAsync(model.Id) == false)
             {
                 return BadRequest();
+            }
+
+            if (User.IsAdmin() == false)
+            {
+                return Unauthorized();
             }
 
             await activityService.DeleteAsync(model.Id);
