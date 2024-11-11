@@ -1,4 +1,5 @@
-﻿using CommunityCenterGorublyane.Core.Contracts;
+﻿using CommunityCenterGorublyane.Core.Constants;
+using CommunityCenterGorublyane.Core.Contracts;
 using CommunityCenterGorublyane.Core.Extensions;
 using CommunityCenterGorublyane.Core.Models.Activity;
 using Microsoft.AspNetCore.Authorization;
@@ -79,6 +80,8 @@ namespace CommunityCenterGorublyane.Controllers
 
             int newActivityId = await activityService.CreateAsync(model);
 
+            TempData[MessageConstants.UserMessageSuccess] = "Вие добавихте дейност успешно";
+
             return RedirectToAction(nameof(Details), new { id = newActivityId, information = model.GetInformation() });
         }
 
@@ -119,6 +122,8 @@ namespace CommunityCenterGorublyane.Controllers
             }
 
             await activityService.EditAsync(id, model);
+
+            TempData[MessageConstants.UserMessageSuccess] = "Вие редактирахте дейност успешно";
 
             return RedirectToAction(nameof(Details), new { id, information = model.GetInformation() });
         }
@@ -164,6 +169,8 @@ namespace CommunityCenterGorublyane.Controllers
             }
 
             await activityService.DeleteAsync(model.Id);
+
+            TempData[MessageConstants.UserMessageSuccess] = "Вие изтрихте дейност успешно";
 
             return RedirectToAction(nameof(All));
         }
