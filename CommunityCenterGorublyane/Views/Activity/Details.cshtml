@@ -17,7 +17,7 @@
             <p>@Model.Description</p> 
             <p>Контакти: <b>@Model.Contact</b></p>
             <div class="form-inline"> 
-                @if (this.User.Identity.IsAuthenticated) 
+                @if (this.User.IsAdmin()) 
                 {
                     <a class="btn btn-outline-primary" asp-controller="Activity" asp-action="Edit" asp-route-id="@Model.Id">Редактирай</a>
                     <a class="ml-2 btn btn-outline-danger" asp-controller="Activity" asp-action="Delete" asp-route-id="@Model.Id">Изтрий</a> 

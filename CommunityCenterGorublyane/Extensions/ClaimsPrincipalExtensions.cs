@@ -1,4 +1,4 @@
-﻿using static CommunityCenterGorublyane.Core.Constants.RoleConstants;
+﻿using static CommunityCenterGorublyane.Core.Constants.AdministratorConstants;
 
 namespace System.Security.Claims
 {

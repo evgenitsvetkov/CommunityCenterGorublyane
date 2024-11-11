@@ -12,6 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IActivityService, ActivityService>();
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }
@@ -34,6 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services
                 .AddDefaultIdentity<IdentityUser>(options =>
                 {
+                    options.User.RequireUniqueEmail = true;
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireNonAlphanumeric = true;
                     options.Password.RequireDigit = true;

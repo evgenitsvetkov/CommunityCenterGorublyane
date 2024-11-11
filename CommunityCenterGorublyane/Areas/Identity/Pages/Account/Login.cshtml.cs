@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using static CommunityCenterGorublyane.Core.Constants.RoleConstants;
+using static CommunityCenterGorublyane.Core.Constants.AdministratorConstants;
 
 namespace CommunityCenterGorublyane.Areas.Identity.Pages.Account
 {

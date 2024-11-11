@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using static CommunityCenterGorublyane.Core.Constants.RoleConstants;
+using static CommunityCenterGorublyane.Core.Constants.AdministratorConstants;
 
 namespace Microsoft.AspNetCore.Builder
 {

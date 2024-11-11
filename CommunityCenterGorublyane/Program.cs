@@ -77,25 +77,25 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "News Details",
         pattern: "/Novini/Detaili/{id}/{information}",
-        defaults: new { Controller = "Activity", Action = "Details" }
+        defaults: new { Controller = "News", Action = "Details" }
     );
 
     endpoints.MapControllerRoute(
         name: "News Add",
         pattern: "Novini/Dobavi",
-        defaults: new { Controller = "Activity", Action = "Add" }
+        defaults: new { Controller = "News", Action = "Add" }
     );
 
     endpoints.MapControllerRoute(
        name: "News Edit",
        pattern: "Novini/{id}/Redaktirai",
-       defaults: new { Controller = "Activity", Action = "Edit" }
+       defaults: new { Controller = "News", Action = "Edit" }
    );
 
     endpoints.MapControllerRoute(
        name: "News Delete",
        pattern: "Novini/Iztrii/{id}",
-       defaults: new { Controller = "Activity", Action = "Delete" }
+       defaults: new { Controller = "News", Action = "Delete" }
    );
 
     endpoints.MapControllerRoute(

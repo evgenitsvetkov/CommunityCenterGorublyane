@@ -2,3 +2,22 @@
     ViewData["Title"] = "Таблото за Управление";
 }
 
+<div class="mt-4 p-5 bg-light text-center"> 
+    <h2 class="display-4">Здравей, Админ!</h2> 
+    <p class="lead mb-1 mt-3"> 
+        Това е администраторската страница - където може да <b>четеш</b>, <b>създаваш</b>, 
+        <b>изтриваш</b> и <b>редактираш</b> дейности. 
+        <br /> 
+    </p> 
+    <p class="lead mt-1"> 
+        Също така може да видиш <b>всички потребители</b> в системата. 
+    </p> 
+    <hr class="my-4">
+    <a asp-area="" asp-controller="Activity" asp-action="All" class="btn btn-primary btn-lg">Всички Дейности</a>
+    <a asp-area="" asp-controller="Activity" asp-action="Add" class="btn btn-primary btn-lg">Добави Дейност</a>
+    <span> | </span> 
+    <a asp-area="" asp-controller="News" asp-action="All" class="btn btn-primary btn-lg">Всички Новини</a>
+    <a asp-area="" asp-controller="News" asp-action="Add" class="btn btn-primary btn-lg">Добави Новина</a>
+    <span> | </span>
+    <a asp-area="Admin" asp-controller="User" asp-action="All" class="btn btn-primary btn-lg">Всички Потребители</a>
+</div>

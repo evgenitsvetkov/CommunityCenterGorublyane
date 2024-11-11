@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static CommunityCenterGorublyane.Core.Constants.RoleConstants;
+using static CommunityCenterGorublyane.Core.Constants.AdministratorConstants;
 
 namespace CommunityCenterGorublyane.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(AdminAreaName)]
     [Authorize(Roles = AdminRole)]
     public class AdminBaseController : Controller
     {
