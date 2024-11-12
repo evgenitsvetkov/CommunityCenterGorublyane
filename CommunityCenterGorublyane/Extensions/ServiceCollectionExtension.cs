@@ -12,6 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IActivityService, ActivityService>();
+            services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IUserService, UserService>();
 
             return services;

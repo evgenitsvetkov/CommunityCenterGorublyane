@@ -28,6 +28,6 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.Models
         [Comment("Date of publication")]
         public DateTime Date { get; set; }
 
-        public List<Comment> Comments { get; set; } = new List<Comment>();
+        public IEnumerable<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

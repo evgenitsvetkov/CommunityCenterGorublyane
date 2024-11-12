@@ -1,5 +1,4 @@
 ﻿using CommunityCenterGorublyane.Core.Contracts;
-using System.Runtime.ConstrainedExecution;
 using System.Text.RegularExpressions;
 
 namespace CommunityCenterGorublyane.Core.Extensions
