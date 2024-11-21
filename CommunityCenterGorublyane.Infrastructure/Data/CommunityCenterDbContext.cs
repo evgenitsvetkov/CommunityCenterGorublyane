@@ -7,16 +7,31 @@ namespace CommunityCenterGorublyane.Infrastructure.Data
 {
     public class CommunityCenterDbContext : IdentityDbContext
     {
-        public CommunityCenterDbContext(DbContextOptions<CommunityCenterDbContext> options)
+        private bool _seedDb;
+
+        public CommunityCenterDbContext(DbContextOptions<CommunityCenterDbContext> options, bool seed = true)
             : base(options)
         {
+            if (Database.IsRelational())
+            {
+                Database.Migrate();
+            } 
+            else
+            {
+                Database.EnsureDeleted();
+                Database.EnsureCreated();
+            }
+            _seedDb = seed;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new UserConfiguration());
-            builder.ApplyConfiguration(new CommentConfiguration());
-            builder.ApplyConfiguration(new ActivityConfiguration());
+            if (_seedDb)
+            {
+                builder.ApplyConfiguration(new UserConfiguration());
+                builder.ApplyConfiguration(new CommentConfiguration());
+                builder.ApplyConfiguration(new ActivityConfiguration());
+            }
 
             base.OnModelCreating(builder);
         }
