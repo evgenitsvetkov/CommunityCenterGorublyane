@@ -28,7 +28,6 @@ namespace CommunityCenterGorublyane.Controllers
 
             query.TotalNewsCount = model.TotalNewsCount;
             query.News = model.News;
-            query.Comments = await newsService.AllCommentsAsync();
 
             return View(query);
         }
@@ -143,7 +142,7 @@ namespace CommunityCenterGorublyane.Controllers
                 Id = id,
                 Title = news.Title,
                 Content = news.Content,
-                Date = news.Date,
+                CreatedAt = news.CreatedAt,
                 ImageUrl = news.ImageUrl
             };
 

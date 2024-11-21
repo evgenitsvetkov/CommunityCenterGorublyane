@@ -16,7 +16,7 @@ namespace CommunityCenterGorublyane.Core.Models.News
         public string Title { get; set; } = null!;
 
         [Display(Name = "Публикувана")]
-        public DateTime Date { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Display(Name = "Изображение")]
         public string? ImageUrl { get; set; } = string.Empty;

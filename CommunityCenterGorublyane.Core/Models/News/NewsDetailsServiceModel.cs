@@ -8,11 +8,11 @@ namespace CommunityCenterGorublyane.Core.Models.News
     {
         [Display(Name = "Описание")]
         [Required(ErrorMessage = RequiredMessage)]
-        [StringLength(DescriptionMaxLength,
-           MinimumLength = DescriptionMinLength,
+        [StringLength(ContentMaxLength,
+           MinimumLength = ContentMinLength,
            ErrorMessage = LengthMessage)]
         public string Content { get; set; } = string.Empty;
 
-        public IEnumerable<NewsCommentServiceModel> Comments { get; set; }
+        public IEnumerable<NewsCommentServiceModel> Comments { get; set; } = null!;
     }
 }

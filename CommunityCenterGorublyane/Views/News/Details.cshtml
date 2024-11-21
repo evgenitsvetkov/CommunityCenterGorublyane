@@ -1,4 +1,6 @@
-﻿@model NewsDetailsServiceModel
+﻿@using System.Globalization
+@model NewsDetailsServiceModel
+
 @{
     ViewData["Title"] = "Описание";
 }
@@ -14,7 +16,7 @@
         <div class="card col-8 border-0">
             <p style="font-size:30px;">@Model.Title</p>
             <p>@Model.Content</p>
-            <p>Публикувано на: <b>@Model.Date</b></p>
+            <p>Публикувано на: <b>@Model.CreatedAt.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)</b></p>
             <div class="form-inline">
                 @if (this.User.IsAdmin())
                 {

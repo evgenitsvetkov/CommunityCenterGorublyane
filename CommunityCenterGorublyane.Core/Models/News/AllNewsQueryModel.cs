@@ -18,8 +18,6 @@ namespace CommunityCenterGorublyane.Core.Models.News
 
         public int TotalNewsCount { get; set; }
 
-        public IEnumerable<NewsCommentServiceModel> Comments { get; set; }
-
         public IEnumerable<NewsServiceModel> News { get; set; } = new List<NewsServiceModel>();
     }
 }

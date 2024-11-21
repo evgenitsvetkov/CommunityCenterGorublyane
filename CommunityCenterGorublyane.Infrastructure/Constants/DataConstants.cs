@@ -16,5 +16,8 @@
 
         public const int AuthorNameMaxLength = 50;
         public const int AuthorNameMinLength = 10;
+
+        public const int CommentMaxLength = 200;
+        public const int CommentMinLength = 2;
     }
 }

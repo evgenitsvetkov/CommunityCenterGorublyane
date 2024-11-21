@@ -22,9 +22,5 @@ namespace CommunityCenterGorublyane.Core.Contracts
         Task<NewsFormModel?> GetNewsFormModelAsync(int id);
 
         Task DeleteAsync(int newsId);
-
-        public Task<bool> CommentExistsAsync(int commentId);
-
-        public Task<IEnumerable<NewsCommentServiceModel>> AllCommentsAsync();
     }
 }

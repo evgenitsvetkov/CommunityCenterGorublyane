@@ -17,8 +17,8 @@ namespace CommunityCenterGorublyane.Core.Models.News
         public string Title { get; set; } = string.Empty;
 
         [Required(ErrorMessage = RequiredMessage)]
-        [StringLength(DescriptionMaxLength,
-            MinimumLength = DescriptionMinLength,
+        [StringLength(ContentMaxLength,
+            MinimumLength = ContentMinLength,
             ErrorMessage = LengthMessage)]
         [Display(Name = "Описание")]
         public string Content { get; set; } = string.Empty;
@@ -28,7 +28,7 @@ namespace CommunityCenterGorublyane.Core.Models.News
 
         [Required]
         [Display(Name = "Публикувана")]
-        public DateTime Date { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public IEnumerable<NewsCommentServiceModel> Comments { get; set; } = new List<NewsCommentServiceModel>();
     }

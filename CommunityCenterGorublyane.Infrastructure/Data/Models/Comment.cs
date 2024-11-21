@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using static CommunityCenterGorublyane.Infrastructure.Constants.DataConstants;
@@ -13,18 +14,20 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(AuthorNameMaxLength)]
-        [Comment("Author's comment")]
-        public string AuthorName { get; set; } = string.Empty;
+        [Comment("Author's user identifier")]
+        public string UserId { get; set; } = string.Empty;
+
+        [ForeignKey(nameof(UserId))]
+        public IdentityUser User { get; set; } = null!;
 
         [Required]
         [MaxLength(ContentMaxLength)]
         [Comment("Comment content")]
-        public string Text { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
 
         [Required]
         [Comment("Date of creation")]
-        public DateTime Date { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required]
         [Comment("News identifier")]

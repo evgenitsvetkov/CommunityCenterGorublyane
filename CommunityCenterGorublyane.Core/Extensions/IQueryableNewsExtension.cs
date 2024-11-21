@@ -11,7 +11,7 @@ namespace CommunityCenterGorublyane.Core.Extensions
             {
                 Id = a.Id,
                 Title = a.Title,
-                Date = a.Date,
+                CreatedAt = a.CreatedAt,
                 ImageUrl = a.ImageUrl
             });
         }

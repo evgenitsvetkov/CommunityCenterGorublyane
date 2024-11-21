@@ -5,7 +5,7 @@
         <img class="card-img-top" src="@Model.ImageUrl" alt="Activity Image">
         <div class="card-body text-center">
             <h4 class="card-title">@Model.Title</h4>
-            <h6>Публикувано на: <b>@Model.Date</b></h6>
+            <h6>Публикувано на: <b>@Model.CreatedAt</b></h6>
             <br />
             <a asp-controller="News" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-primary">Прочети повече</a>
             @if (this.User.IsAdmin())

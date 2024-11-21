@@ -60,7 +60,7 @@ namespace CommunityCenterGorublyane.Core.Services
             {
                 Title = model.Title,
                 Content = model.Content,
-                Date = DateTime.Now,
+                CreatedAt = DateTime.Now,
                 ImageUrl = model.ImageUrl,
             };
 
@@ -95,32 +95,19 @@ namespace CommunityCenterGorublyane.Core.Services
             return await repository.AllReadOnly<News>()
                 .AnyAsync(n => n.Id == id);
         }
-
-        public async Task<bool> CommentExistsAsync(int commentId)
-        {
-            return await repository.AllReadOnly<Comment>()
-                .AnyAsync(c => c.Id == commentId);
-        }
-
+        
         public async Task<NewsFormModel?> GetNewsFormModelAsync(int id)
         {
-            var news = await repository.AllReadOnly<News>()
+            return await repository.AllReadOnly<News>()
                 .Where(n => n.Id == id)
                 .Select(n => new NewsFormModel()
                 {
                     Title = n.Title,
                     Content = n.Content,
                     ImageUrl = n.ImageUrl,
-                    Date = n.Date,
+                    CreatedAt = n.CreatedAt,
                 })
                 .FirstOrDefaultAsync();
-
-            if (news != null)
-            {
-                news.Comments = await AllCommentsAsync();
-            }
-
-            return news;
         }
 
         public async Task<NewsDetailsServiceModel> NewsDetailsByIdAsync(int id)
@@ -132,23 +119,10 @@ namespace CommunityCenterGorublyane.Core.Services
                     Id = n.Id,
                     Title = n.Title,
                     Content = n.Content,
-                    Date = n.Date,
+                    CreatedAt = n.CreatedAt,
                     ImageUrl = n.ImageUrl,
                 })
                 .FirstAsync();
-        }
-
-        public async Task<IEnumerable<NewsCommentServiceModel>> AllCommentsAsync()
-        {
-            return await repository.AllReadOnly<Comment>()
-                .Select(g => new NewsCommentServiceModel()
-                {
-                    Id = g.Id,
-                    AuthorName = g.AuthorName,
-                    Text = g.Text,
-                    Date = g.Date
-                })
-                .ToListAsync();
         }
     }
 }
