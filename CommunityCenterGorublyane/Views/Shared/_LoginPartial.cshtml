@@ -8,25 +8,25 @@
         if (User.IsAdmin())
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="DashBoard">Админски Интерфейс</a>
+                <a class="btn nav-link text-light" asp-area="Admin" asp-controller="Home" asp-action="DashBoard">Админски Интерфейс</a>
             </li>
         }
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Профил</a>
+            <a class="btn nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index">Профил</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Излизане</button>
+                <button type="submit" class="nav-link btn btn-link text-light">Излизане</button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+            <a class="btn nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Влизане</a>
+            <a class="btn nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Влизане</a>
         </li>
     }
 </ul>
