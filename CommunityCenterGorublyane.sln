@@ -9,7 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityCenterGorublyane.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityCenterGorublyane.Infrastructure", "CommunityCenterGorublyane.Infrastructure\CommunityCenterGorublyane.Infrastructure.csproj", "{7D6FC559-70B7-476D-A712-95CBF1D950A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityCenterGorublyane.Tests", "CommunityCenterGorublyane.Tests\CommunityCenterGorublyane.Tests.csproj", "{27791710-8366-4519-B0AB-BC18A38204E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunityCenterGorublyane.Tests", "CommunityCenterGorublyane.Tests\CommunityCenterGorublyane.Tests.csproj", "{27791710-8366-4519-B0AB-BC18A38204E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2104E476-3A7A-4922-9259-CA31FDBEA8E5} = {2104E476-3A7A-4922-9259-CA31FDBEA8E5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

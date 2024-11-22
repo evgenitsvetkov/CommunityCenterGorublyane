@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CommunityCenterGorublyane.Core\CommunityCenterGorublyane.Core.csproj" />
     <ProjectReference Include="..\CommunityCenterGorublyane.Infrastructure\CommunityCenterGorublyane.Infrastructure.csproj" />
+    <ProjectReference Include="..\CommunityCenterGorublyane\CommunityCenterGorublyane.csproj" />
   </ItemGroup>
 
 </Project>

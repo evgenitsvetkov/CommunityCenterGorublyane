@@ -58,14 +58,13 @@ namespace CommunityCenterGorublyane.Tests.UnitTests
             var newActivityId = await _activityService.CreateAsync(
                 newActivityFormModel);
 
-            //Assert the activities' current count hav increased by 1
+            //Assert the activities' current count have increased by 1
             var activitiesInDbAfter = await _data.Activities.CountAsync();
             Assert.That(activitiesInDbAfter, Is.EqualTo(activitiesInDbBefore + 1));
-
+            
             //Assert the new activity is created with correct data
             var newActivityInDb = await _data.Activities.FindAsync(newActivityId);
             Assert.That(newActivityInDb.Title, Is.EqualTo(newActivity.Title));
-            
         }
 
         [Test]
@@ -141,10 +140,48 @@ namespace CommunityCenterGorublyane.Tests.UnitTests
 
             //Act: invoke the service method with the valid id
             var result = await _activityService.ExistsAsync(activityId);
-
+            
             //Assert the returned result is true
             Assert.IsTrue(result);
         }
-        
+
+        [Test]
+        public async Task Exists_ShouldReturnCorrectFalse_WithInvalidId()
+        {
+            //Arrange: invalid activity id
+            var activityId = 300;
+
+            //Act: invoke the service method with the invalid id
+            var result = await _activityService.ExistsAsync(activityId);
+
+            //Assert the returned invalidResult is false
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public async Task Test_AllAsync_FiltersBySearchTerm()
+        {
+            //Arrange
+            //Act
+            var result = await _activityService.AllAsync("First Test Activity");
+
+            //Assert
+            Assert.That(1, Is.EqualTo(result.TotalActivitiesCount));
+            Assert.IsTrue(result.Activities.First().Id == 1);
+
+        }
+
+        [Test]
+        public async Task Test_AllAsync_FiltersBySearchTerm_WithInvalidSearchTerm()
+        {
+            //Arrange
+            //Act
+            var resultTwo = await _activityService.AllAsync("NotAValidSearchTerm");
+
+            //Assert
+            Assert.That(0, Is.EqualTo(resultTwo.TotalActivitiesCount));
+            Assert.IsEmpty(resultTwo.Activities);
+        }
+
     }
 }

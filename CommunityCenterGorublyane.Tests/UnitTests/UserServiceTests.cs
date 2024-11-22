@@ -13,7 +13,7 @@ namespace CommunityCenterGorublyane.Tests.UnitTests
             => _userService = new UserService(_repository);
 
         [Test]
-        public async Task All_ShouldReturnCorrectUsers()
+        public async Task AllAsync_ShouldReturnCorrectUsers()
         {
             //Arrange
 
@@ -23,11 +23,14 @@ namespace CommunityCenterGorublyane.Tests.UnitTests
 
             //Assert the returned users' count is correct
             var usersCount = _data.Users.Count();
+
             var resultUsers = result.ToList();
+            
             Assert.That(resultUsers.Count(), Is.EqualTo(usersCount));
 
             //Assert a returned user data is correct 
             var user = resultUsers.FirstOrDefault(u => u.Email == GuestUser.Email);
+            
             Assert.IsNotNull(user);
         }
     }

@@ -30,6 +30,19 @@ namespace CommunityCenterGorublyane.Tests.UnitTests
         }
 
         [Test]
+        public async Task Exists_ShouldReturnCorrectFalse_WithInvalidId()
+        {
+            //Arrange: invalid newsId id
+            var newsId = 300;
+
+            //Act: invoke the service method with the invalid id
+            var result = await _newsService.ExistsAsync(newsId);
+
+            //Assert the returned invalidResult is false
+            Assert.IsFalse(result);
+        }
+
+        [Test]
         public async Task Delete_ShouldDeleteNewsSuccessfully()
         {
             //Arrange: add a new news to the database
@@ -143,6 +156,31 @@ namespace CommunityCenterGorublyane.Tests.UnitTests
             var newsInDb = await _data.News.FindAsync(newsId);
             Assert.That(result.Id, Is.EqualTo(newsInDb.Id));
             Assert.That(result.Title, Is.EqualTo(newsInDb.Title));
+        }
+
+        [Test]
+        public async Task Test_AllAsync_FiltersBySearchTerm()
+        {
+            //Arrange
+            //Act
+            var result = await _newsService.AllAsync("First Test News");
+
+            //Assert
+            Assert.That(1, Is.EqualTo(result.TotalNewsCount));
+            Assert.IsTrue(result.News.First().Id == 1);
+
+        }
+
+        [Test]
+        public async Task Test_AllAsync_FiltersBySearchTerm_WithInvalidSearchTerm()
+        {
+            //Arrange
+            //Act
+            var resultTwo = await _newsService.AllAsync("NotAValidSearchTerm");
+
+            //Assert
+            Assert.That(0, Is.EqualTo(resultTwo.TotalNewsCount));
+            Assert.IsEmpty(resultTwo.News);
         }
     }
 }
