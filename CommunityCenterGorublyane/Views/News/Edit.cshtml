@@ -1,0 +1,13 @@
+﻿@model NewsFormModel
+@{
+    ViewData["Title"] = "Редактирай Новина";
+}
+
+<h2 class="text-center display-4">@ViewData["Title"]</h2>
+<hr />
+
+<partial name="_NewsFormPartial" model="@Model" />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

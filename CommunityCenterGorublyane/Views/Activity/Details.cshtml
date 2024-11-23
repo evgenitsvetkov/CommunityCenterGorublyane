@@ -1,0 +1,28 @@
+﻿@model ActivityDetailsServiceModel
+
+@{ 
+    ViewBag.Title = "Описание"; 
+} 
+
+<h2 class="text-center display-4">@ViewBag.Title</h2>
+<hr /> 
+
+<div class="container" style="display:inline"> 
+    <div class="row"> 
+        <div class="col-4"> 
+            <img class="card-img-top" style="width: 20rem;" src="@Model.ImageUrl" alt="Activity Image"> 
+        </div> 
+        <div class="card col-8 border-0"> 
+            <p style="font-size:30px;">@Model.Title</p>
+            <p>@Model.Description</p> 
+            <p>Контакти: <b>@Model.Contact</b></p>
+            <div class="form-inline"> 
+                @if (this.User.IsAdmin()) 
+                {
+                    <a class="btn btn-outline-primary" asp-controller="Activity" asp-action="Edit" asp-route-id="@Model.Id">Редактирай</a>
+                    <a class="ml-2 btn btn-outline-danger" asp-controller="Activity" asp-action="Delete" asp-route-id="@Model.Id">Изтрий</a> 
+                } 
+            </div>
+        </div> 
+    </div>
+</div>

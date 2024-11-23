@@ -1,0 +1,29 @@
+﻿@using System.Globalization
+@model NewsDetailsServiceModel
+
+@{
+    ViewData["Title"] = "Описание";
+}
+
+<h2 class="text-center display-4">@ViewData["Title"]</h2>
+<hr />
+
+<div class="container" style="display:inline">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" style="width: 20rem;" src="@Model.ImageUrl" alt="News Image">
+        </div>
+        <div class="card col-8 border-0">
+            <p style="font-size:30px;">@Model.Title</p>
+            <p>@Model.Content</p>
+            <p>Публикувано на: <b>@Model.CreatedAt.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)</b></p>
+            <div class="form-inline">
+                @if (this.User.IsAdmin())
+                {
+                    <a class="btn btn-outline-primary" asp-controller="News" asp-action="Edit" asp-route-id="@Model.Id">Редактирай</a>
+                    <a class="ml-2 btn btn-outline-danger" asp-controller="News" asp-action="Delete" asp-route-id="@Model.Id">Изтрий</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

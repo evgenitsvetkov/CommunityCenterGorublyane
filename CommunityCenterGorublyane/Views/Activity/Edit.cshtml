@@ -1,0 +1,13 @@
+﻿@model ActivityFormModel
+@{
+    ViewBag.Title = "Редактирай Дейност";
+}
+
+<h2 class="text-center display-4">@ViewBag.Title</h2>
+<hr />
+
+<partial name="_ActivityFormPartial" model="@Model" />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

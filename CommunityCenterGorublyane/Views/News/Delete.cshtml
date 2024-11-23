@@ -1,0 +1,33 @@
+﻿@model NewsDetailsViewModel
+@{
+    ViewData["Title"] = "Изтрий Новина";
+}
+
+<h2 class="text-center display-4">@ViewData["Title"]</h2>
+<hr />
+
+<form asp-action="Delete">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="card-img-top" src="@Model.ImageUrl" alt="News Image">
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Заглавие</label>
+                <input asp-for="Title" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label">Описание</label>
+                <input asp-for="Content" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label">Публикувано на</label>
+                <input asp-for="CreatedAt" class="form-control" disabled="disabled" />
+            </div>
+            <div class="form-group mt-4">
+                <a class="btn btn-primary" asp-controller="Activity" asp-action="All">Назад</a>
+                <input type="submit" value="Изтрий" class="btn btn-danger" />
+            </div>
+        </div>
+    </div>
+</form>
