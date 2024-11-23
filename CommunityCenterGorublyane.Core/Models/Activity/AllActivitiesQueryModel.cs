@@ -5,7 +5,7 @@ namespace CommunityCenterGorublyane.Core.Models.Activity
 {
     public class AllActivitiesQueryModel
     {
-        public int ActivitiesPerPage { get; init; } = 3;
+        public int ActivitiesPerPage { get; init; } = 6;
 
         [Display(Name = "Търсене")]
         public string SearchTerm { get; init; } = null!;

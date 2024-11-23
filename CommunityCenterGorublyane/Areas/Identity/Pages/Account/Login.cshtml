@@ -13,7 +13,7 @@
             <form id="account" method="post">
                 <h2 class="text-center">Използвайте вашият акаунт, за да влезнете.</h2>
                 <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div asp-validation-summary="ModelOnly" class="text-danger">Грешен имейл или парола</div>
                 <div class="form-floating">
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                     <label asp-for="Input.Email" class="form-label"></label>

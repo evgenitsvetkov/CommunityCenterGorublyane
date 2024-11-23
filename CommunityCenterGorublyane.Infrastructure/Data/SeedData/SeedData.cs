@@ -64,7 +64,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
                 Title = "Детски танцов състав - Петлица",
                 Description = "За деца: понеделник и сряда - от 17:30ч. до 18:15ч. За юноши: понеделник и сряда - от 18:30ч. до 19:30ч.",
                 Contact = "Илко Желязков - 089 671 0606; Ралица Петрова - 088 323 7501",
-                ImageUrl = ""
+                ImageUrl = "/images/gallery/image23.jpg"
             };
 
             SecondActivity = new Activity()
@@ -73,7 +73,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
                 Title = "Школа по народни танци - Петлица, за възрастни",
                 Description = "Вторник и четвъртък - от 18:30ч. до 19:30ч.",
                 Contact = "Ралица Иванова - 089 671 0606",
-                ImageUrl = ""
+                ImageUrl = "/images/gallery/image24.jpg"
             };
 
             ThirdActivity = new Activity()
@@ -91,7 +91,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
                 Title = "Художествена гимнастика",
                 Description = "За деца от 4 до 14 години: вторник и петък - от 17:00ч. до 18:00ч.",
                 Contact = "Биляна Малджиева - 087 779 5558",
-                ImageUrl = ""
+                ImageUrl = "/images/gallery/image21.jpg"
             };
 
             FifthActivity = new Activity()
@@ -100,7 +100,7 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
                 Title = "Уроци по рисуване",
                 Description = "За деца от 4 до 14 години - със записване",
                 Contact = "Юлиана Николова - 089 655 2834",
-                ImageUrl = ""
+                ImageUrl = "/images/gallery/image22.jpg"
             };
 
             SixthActivity = new Activity()

@@ -5,7 +5,7 @@ namespace CommunityCenterGorublyane.Core.Models.News
 {
     public class AllNewsQueryModel
     {
-        public int NewsPerPage { get; init; } = 3;
+        public int NewsPerPage { get; init; } = 6;
 
         [Display(Name = "Търсене")]
         public string SearchTerm { get; init; } = null!;
