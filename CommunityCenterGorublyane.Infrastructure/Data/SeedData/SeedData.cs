@@ -5,21 +5,21 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.SeedData
 {
     internal class SeedData
     {
-        public IdentityUser AdminUser { get; set; }
+        public IdentityUser AdminUser { get; set; } = null!;
 
-        public IdentityUser GuestUser { get; set; }
+        public IdentityUser GuestUser { get; set; } = null!;
 
-        public Activity FirstActivity { get; set; }
+        public Activity FirstActivity { get; set; } = null!;
 
-        public Activity SecondActivity { get; set; }
+        public Activity SecondActivity { get; set; } = null!;
 
-        public Activity ThirdActivity { get; set; }
+        public Activity ThirdActivity { get; set; } = null!;
 
-        public Activity FourthActivity { get; set; }
+        public Activity FourthActivity { get; set; } = null!;
 
-        public Activity FifthActivity { get; set; }
+        public Activity FifthActivity { get; set; } = null!;
 
-        public Activity SixthActivity { get; set; }
+        public Activity SixthActivity { get; set; } = null!;
 
         public SeedData()
         {
