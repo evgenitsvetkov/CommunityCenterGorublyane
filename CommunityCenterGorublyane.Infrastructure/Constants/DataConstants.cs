@@ -8,7 +8,7 @@
         public const int ContactsMaxLength = 100;
         public const int ContactsMinLength = 20;
 
-        public const int DescriptionMaxLength = 200;
+        public const int DescriptionMaxLength = 500;
         public const int DescriptionMinLength = 30;
 
         public const int ContentMaxLength = 500;
