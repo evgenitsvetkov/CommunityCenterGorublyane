@@ -19,7 +19,7 @@ namespace CommunityCenterGorublyane.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> All([FromQuery]AllActivitiesQueryModel query)
+        public async Task<IActionResult> All([FromQuery] AllActivitiesQueryModel query)
         {
             var model = await activityService.AllAsync(
                 query.SearchTerm,
@@ -66,6 +66,7 @@ namespace CommunityCenterGorublyane.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(ActivityFormModel model)
         {
             if (ModelState.IsValid == false)
@@ -104,6 +105,7 @@ namespace CommunityCenterGorublyane.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ActivityFormModel model)
         {
             if (await activityService.ExistsAsync(id) == false)
@@ -156,6 +158,7 @@ namespace CommunityCenterGorublyane.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(ActivityDetailsViewModel model)
         {
             if (await activityService.ExistsAsync(model.Id) == false)

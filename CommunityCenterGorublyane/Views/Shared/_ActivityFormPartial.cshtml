@@ -4,6 +4,7 @@
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form method="post">
             <div class="form-group">
+                @Html.AntiForgeryToken()
                 <label asp-for="Title"></label>
                 <input asp-for="Title" class="form-control" placeholder="Уроци по рисуване...">
                 <span asp-validation-for="Title" class="small text-danger"></span>
@@ -25,7 +26,7 @@
             </div>
             
             <div class="text-center"> 
-                <input class="btn btn-primary mt-3" type="submit" value="Save" /> 
+                <input class="btn btn-primary mt-3" type="submit" value="Запази" /> 
             </div>
         </form>
     </div>

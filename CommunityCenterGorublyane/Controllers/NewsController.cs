@@ -46,6 +46,7 @@ namespace CommunityCenterGorublyane.Controllers
             return View(model);
         }
 
+
         [HttpGet]
         public async Task<IActionResult> Add()
         {
@@ -60,6 +61,7 @@ namespace CommunityCenterGorublyane.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(NewsFormModel model)
         {
             if (ModelState.IsValid == false)
@@ -97,7 +99,9 @@ namespace CommunityCenterGorublyane.Controllers
             return View(model);
         }
 
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, NewsFormModel model)
         {
             if (await newsService.ExistsAsync(id) == false)
@@ -150,6 +154,7 @@ namespace CommunityCenterGorublyane.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(NewsDetailsViewModel model)
         {
             if (await newsService.ExistsAsync(model.Id) == false)

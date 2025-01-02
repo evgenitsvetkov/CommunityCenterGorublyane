@@ -28,7 +28,7 @@ namespace CommunityCenterGorublyane.Core.Models.News
 
         [Required]
         [Display(Name = "Публикувана")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public IEnumerable<NewsCommentServiceModel> Comments { get; set; } = new List<NewsCommentServiceModel>();
     }

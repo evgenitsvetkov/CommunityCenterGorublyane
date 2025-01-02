@@ -7,6 +7,7 @@
 <hr />
 
 <form asp-action="Delete">
+    @Html.AntiForgeryToken()
     <div class="row">
         <div class="col-md-4">
             <img class="card-img-top" src="@Model.ImageUrl" alt="Activity Image"> 
