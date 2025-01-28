@@ -21,13 +21,13 @@ namespace CommunityCenterGorublyane.Infrastructure.Data.Models
         public IdentityUser User { get; set; } = null!;
 
         [Required]
-        [MaxLength(ContentMaxLength)]
+        [MaxLength(CommentMaxLength)]
         [Comment("Comment content")]
         public string Content { get; set; } = string.Empty;
 
         [Required]
         [Comment("Date of creation")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Required]
         [Comment("News identifier")]

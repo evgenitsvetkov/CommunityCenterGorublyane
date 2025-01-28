@@ -4,15 +4,15 @@ using static CommunityCenterGorublyane.Infrastructure.Constants.DataConstants;
 
 namespace CommunityCenterGorublyane.Core.Models.News
 {
-    public class NewsDetailsServiceModel : NewsServiceModel
+    public class NewsCommentFormModel
     {
         [Required(ErrorMessage = RequiredMessage)]
-        [StringLength(ContentMaxLength,
-           MinimumLength = ContentMinLength,
-           ErrorMessage = LengthMessage)]
-        [Display(Name = "Описание")]
+        [StringLength(CommentMaxLength, 
+            MinimumLength = CommentMinLength,
+            ErrorMessage = LengthMessage)]
+        [Display(Name = "Коментар")]
         public string Content { get; set; } = string.Empty;
 
-        public IEnumerable<NewsCommentServiceModel> Comments { get; set; } = new List<NewsCommentServiceModel>();
+        public int NewsId { get; set; }
     }
 }

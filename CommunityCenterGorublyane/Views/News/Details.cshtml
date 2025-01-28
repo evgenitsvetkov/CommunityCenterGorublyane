@@ -1,8 +1,10 @@
-﻿@using System.Globalization
-@model NewsDetailsServiceModel
+﻿@model NewsDetailsServiceModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
 
 @{
     ViewData["Title"] = "Описание";
+
+    var requestToken = Antiforgery.GetAndStoreTokens(Context).RequestToken;
 }
 
 <h2 class="text-center display-4">@ViewData["Title"]</h2>
@@ -16,7 +18,7 @@
         <div class="card col-8 border-0">
             <p style="font-size:30px;">@Model.Title</p>
             <p>@Model.Content</p>
-            <p>Публикувано на: <b>@Model.CreatedAt.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)</b></p>
+            <p>Публикувано на: <b>@Model.CreatedAt.ToString("dd.MM.yyyy HH:mmч.", CultureInfo.InvariantCulture)</b></p>
             <div class="form-inline">
                 @if (this.User.IsAdmin())
                 {
@@ -26,4 +28,166 @@
             </div>
         </div>
     </div>
+    <form id="commentsSection" class="row mt-5">
+        <input id="__RequestVerificationToken" type="hidden" value="@requestToken" />
+        <p><b>Коментари</b> @Model.Comments.Count()</p>
+        <div id="commentsContainer">
+            @await Component.InvokeAsync("CommentComponent", new {newsId = Model.Id})
+        </div>
+    </form>
+    <div class="form-inline col-7">
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <form id="commentForm">
+                <input id="RequestVerificationToken" type="hidden" value="@requestToken" />
+                <input type="hidden" id="NewsId" name="NewsId" value="@Model.Id" />
+                <textarea id="Content" name="Content" rows="3" class="form-control" placeholder="Добавете коментар..." required></textarea>
+                <button id="submitComment" class="btn btn-outline-primary mt-3" type="submit">Добави Коментар</button>
+            </form>
+            <div id="resultMessage"></div>
+        }
+    </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#commentForm').submit(function (e) {
+                e.preventDefault();
+
+                const data = {
+                    Content: $('#Content').val(),
+                    NewsId: $('#NewsId').val()
+                };
+
+                $.ajax({
+                    url: "@Url.Action("AddComment", "Comment")",
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    headers: {
+                        'RequestVerificationToken': $('input[id="RequestVerificationToken"]').val()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            const formattedDate = new Date(response.createdAt).toLocaleString('bg-BG');
+                          
+                            const commentHtml = `
+                                <div class="comment mb-3" id="comment-${response.commentId}">
+                                    <strong id="Username">${response.username}</strong>
+                                    <span id="CreatedAt">(${formattedDate})</span>
+                                    <p id="comment-Content">${response.content}</p>
+                                    <button class="btn btn-outline-primary btn-sm edit-comment" data-id="${response.commentId}">Редактирай</button>
+                                    <button class="btn btn-outline-danger btn-sm delete-comment" data-id="${response.commentId}">Изтрий</button>
+                                </div>
+                             `;
+
+                            $('#commentsContainer > #commentsSection').append(commentHtml);
+                            $('#commentForm')[0].reset();
+
+                            $('#resultMessage')
+                                .text('Коментарът беше добавен успешно!')
+                                .css('color', 'green');
+                        } else {
+                            $('#resultMessage')
+                                .text(response.message || 'Възникна грешка при добавяне на коментар.')
+                                .css('color', 'red');
+                        }
+                    },
+                    error: function (xhr) {
+                        console.error('Error:', xhr.status, xhr.statusText, xhr.responseText);
+                        $('#resultMessage')
+                            .text('Появи се неочаквана грешка при добавяне на коментар. Полето Коментар трябва да е между 2 и 200 символа')
+                            .css('color', 'red');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#commentsSection').on('click', '.delete-comment', function (e) {
+                e.preventDefault();
+                
+                const data = {
+                    Id: $(this).data('id'),
+                }
+        
+                $.ajax({
+                    url: "@Url.Action("DeleteComment", "Comment")",
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    headers: {
+                        'RequestVerificationToken': $('input[id="__RequestVerificationToken"]').val()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            $(`#comment-${data.Id}`).remove();
+                            $('#resultMessage')
+                                .text('Коментарът беше изтрит успешно!')
+                                .css('color', 'green');
+                        } else {
+                            $('#resultMessage')
+                                .text(response.message || 'Възникна грешка при изтриване на коментар.')
+                                .css('color', 'red');
+                        }
+                    },
+                    error: function (xhr) {
+                        console.error('Error:', xhr.status, xhr.statusText, xhr.responseText);
+                        $('#resultMessage')
+                            .text('Появи се неочаквана грешка при изтриване на коментар.')
+                            .css('color', 'red');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.edit-comment', function (e) {
+                e.preventDefault();
+
+                const newContent = prompt('Редактирайте вашият коментар:');
+              
+                if (!newContent) {
+                    alert('Коментара не може да бъде празен.');
+                    return;
+                }
+
+                const data = {
+                    Id: $(this).data('id'),
+                    Content: newContent,
+                }
+
+                $.ajax({
+                    url: "@Url.Action("EditComment", "Comment")",
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    headers: {
+                        'RequestVerificationToken': $('input[id="__RequestVerificationToken"]').val()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            $(`#comment-${data.Id} p`).text(newContent);
+                            $('#resultMessage')
+                                .text('Коментарът беше редактиран успешно!')
+                                .css('color', 'green');
+                        } else {
+                            $('#resultMessage')
+                                .text(response.message || 'Възникна грешка при редактиране на коментар.')
+                                .css('color', 'red');
+                        }
+                    },
+                    error: function (xhr) {
+                        console.error('Error:', xhr.status, xhr.statusText, xhr.responseText);
+                        $('#resultMessage')
+                            .text('Появи се неочаквана грешка при редактиране на коментар.')
+                            .css('color', 'red');
+                    }
+                });
+            });
+        });
+    </script>
+}

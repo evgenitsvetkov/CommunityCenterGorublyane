@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NewsCommentServiceModel>
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+
+@{
+    var requestToken = Antiforgery.GetAndStoreTokens(Context).RequestToken;
+}
+
+<div id="commentsSection">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var comment in Model)
+        {
+            <div class="comment mb-3" id="comment-@comment.Id">
+                <input id="RequestVerificationToken" type="hidden" value="@requestToken" />
+                <strong id="Username">@comment.Username</strong>
+                <span id="CreatedAt">(@comment.CreatedAt.ToString("dd.MM.yyyy HH:mmч."))</span>
+                <p id="comment-Content">@comment.Content</p>
+                @if(User.IsAdmin() || comment.UserId == User.Id())
+                {
+                    <button class="btn btn-outline-primary btn-sm edit-comment" data-id="@comment.Id">Редактирай</button>
+                    <button class="btn btn-outline-danger btn-sm delete-comment" data-id="@comment.Id">Изтрий</button>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <p>Няма добавени коментари.</p>
+    }
+</div>

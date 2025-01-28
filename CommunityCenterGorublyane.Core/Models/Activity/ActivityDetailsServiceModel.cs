@@ -6,18 +6,18 @@ namespace CommunityCenterGorublyane.Core.Models.Activity
 {
     public class ActivityDetailsServiceModel : ActivityServiceModel
     {
-        [Display(Name = "Описание")]
         [Required(ErrorMessage = RequiredMessage)]
         [StringLength(DescriptionMaxLength,
             MinimumLength = DescriptionMinLength,
             ErrorMessage = LengthMessage)]
+        [Display(Name = "Описание")]
         public string Description { get; set; } = null!;
         
-        [Display(Name = "Контакти")]
         [Required(ErrorMessage = RequiredMessage)]
         [StringLength(ContactsMaxLength,
             MinimumLength = ContactsMinLength,
             ErrorMessage = LengthMessage)]
+        [Display(Name = "Контакти")]
         public string Contact { get; set; } = null!;
     }
 }
